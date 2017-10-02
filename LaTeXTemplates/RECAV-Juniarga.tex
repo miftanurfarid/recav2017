@@ -1,0 +1,285 @@
+\documentclass[a4paper]{jpconf}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{verbatim}
+\begin{document}
+\title{Underwater Source Separation Using Multi-Stage Independent Component Analysis in Semi-Anechoic Water Tank}
+
+\author{Ridhwan Juniarga Pribadi, Mifta Nur Farid, Wiratno Argo Asmoro, Wirawan, Endang Widjiati, Dhany Arifianto}
+
+\address{Dept. of Engineering Physics, Faculty of Industrial Technology, Institut Teknologi Sepuluh Nopember, Kampus ITS Sukolilo, Surabaya 60111, Indonesia}
+
+\ead{ridhwan09@mhs.ep.its.ac.id}
+
+\begin{abstract}
+The experiment of source separation in sea water environment often faced difficulties especially for controlling certain variables. One of the upcoming solution to simplify sea water environment was to conduct the experiment in the anechoic water tank. To evaluate the effects of the experiment performed in the water tank, the comparison of source separation using linear mixture and in-tank mixture will be analyzed. The source separation was performed in three different methods, Time Domain Independent Component Analysis (TDICA), Frequency Domain Independent Component Analysis (FDICA), and Multi Stage Independent Component Analysis (MSICA). The experiment result showing that compared to the linear mixture source, the performance of source separation degrade significantly while performed on the water tank, indicated by the MSE value which increased from $3 \times 10^{-8}$ to $6 \times 10^{-2}$. This result showing that the source mixture that occurred in water tank, much more complex compared to the linear mixture.
+\end{abstract}
+
+\section{Introduction}
+Acoustic wave played important role in underwater communication. It have been widely used in many application of underwater communication, for example in SONAR and underwater mapping. In terms of propagation and power attenuation, it performed better than electromagnetic wave in medium of water. However, the application of acoustic signals in ocean encountered many problems, such as limitation of bandwidth, huge noise environment, complexity of the medium itself, and the impact to surrounding marine biological life, thus required further processing in order to be used properly. Wave propagation modelling in water also has faced another a lot of problem and depend on many variables. Considering those level of complexity, a technique that is able to simplify the process of propagation modelling, as well as the reconstruction of the mixed sound was required.
+
+Most underwater acoustic research is conducted in open sea waters which in fact has a high variable variation rate. References \cite{1} proposed one method of solving this problem by constructing a marine miniature in an anechoic water tank. By using this kind of tank as test-bed the fluctuation of important variables such as temperature, and salinity can be controlled and multipath channel can be eliminated. 
+
+By having proper experiment place, the modelling of propagation will be simplified and then Independent Component Analysis (ICA) will take place of sources separation. ICA is one of the method which estimate sources signal without any prior information about sources itself. There are two essential requirements of ICA in order to be used properly, first the source signal have to be independent, second the signal distribution must be non-Gaussian.
+
+One of the common method of ICA is Fast ICA, which in this paper will be called Time-Domain ICA (TDICA). This method are easily to be used and quite fast to be computed. The process of source mixing are formulated as common wave superposition (linear mixture). The drawback of this method came when facing signal which mixed in reverberant condition (convolutive mixture). In those condition, the propagation of source signal also impacted by the room impulse response, thus the assumption of independence and number of sources are less then sensors will collapse. Another method of ICA is to perform separation under frequency domain, which called Frequency Domain ICA (FDICA). This method will allow convolutive mixture to be simplify as linear mixture through Fourier Transform. However this methods also have drawback since the assumption of signal independence will collapse in each sub band. To overcome this problem, \cite{2} proposed to combine both of this methods in sequence, which called Multistage ICA (MSICA). In this method, signal estimation will be done in two stages, first in FDICA then followed by TDICA. 
+
+This paper will evaluated the quality of sources estimation using three of mentioned methods. The experiment conducted in water tank which belong to Vibration and Acoustic Laboratory, Institut Teknologi Sepuluh Nopember. The Performances of estimated signal will be evaluated in Mean Square Error (MSE) value by comparation to baseline signal. The MSE value of each method will be evaluated as function of distance of source and sensors.
+
+\section{Determination of Test Signals}
+There are two condition that have to be met by source signals. First, they have to be independent each other. It means that the first signal doesn’t contain any information of another signal. Second, the statistical distribution of the two sources signal are not gaussian distribution \cite{3}. Gaussianity of a signal can be determined by testing the value of kurtosis. Kurtosis values ​​of a probability distribution is shown by the following equation \cite{4},
+
+\begin{equation} \label{pers:kurt}
+kurt(s) = E\{s^4\} - 3[E\{s^2\}]^2
+\end{equation}
+where $E\{s^4\}$ is a moment of $4^{th}$ and $E\{s^2\}$ is the second moment of the random variable $(s)$ \cite{3}.
+
+Next requirement is the test signal must have a strong independent character against each other. The approach of testing the independence of two random variables is based on the value of the correlation between the two signals,
+\begin{equation} \label{pers:corr}
+C(s_1,s_2) = E\{s_1 s_2\} - E\{s_1\}E\{s_2\}
+\end{equation}
+
+Using two preliminary requirement above, the signals below (Table \ref{table:source}) will be treated as the source signals of the experiment.
+
+% \begin{table}[h]
+% \centering
+% \caption{Source signal}
+% \label{table:source}
+% \begin{tabular}{|l|l|l|}
+% \hline
+% \multicolumn{1}{|c|}{No.} & \multicolumn{1}{c|}{Signal} & \multicolumn{1}{c|}{Note} \\ \hline
+% 1.                        & Puretone 500 Hz             & Narrowband                \\ \hline
+% 2.                        & Puretone 600 Hz             & Narrowband                \\ \hline
+% 3.                        & Puretone 700 Hz             & Narrowband                \\ \hline
+% 4.                        & Puretone 800 Hz             & Narrowband                \\ \hline
+% 5.                        & Puretone 900 Hz             & Narrowband                \\ \hline
+% 6.                        & Puretone 1 kHz              & Narrowband                \\ \hline
+% 7.                        & Ship noise                  & Wideband stationary       \\ \hline
+% 8.                        & Sonar pinging               & Wideband Non-stationary   \\ \hline
+% \end{tabular}
+% \end{table}
+
+In general, the source signal can be divided in three category, narrowband represented by puretone signal, wideband stationary represented by Ship Noise signal, and wideband non-stationary represented by Sonar Pinging Signal. Each of the signal were recorded in $8000$ Hz sampling frequency, $16$ bit per sample, and have $4$ seconds duration.
+
+\section{Experiment Setup}
+The Experiment was conducting in water tank which have dimension of $2~m$ length, $1~m$ width, and $1~m$ height. The inside faces of tank was covered with absorber, to decrease the amount of reflection. The tank was filled with salt water which have salinity of $3.5\%$ and temperature of $25^oC$. The Velocity of sound in this condition is $1468.37~m/s$.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=6.2in]{experimentSetupwide.png}
+\end{center}
+\caption{\label{pict:setup}Experiment Setup. Side view (right) and top view (left)}
+\end{figure}
+
+The configuration of sources and sensor can be seen in Figure \ref{pict:setup}. There are three variations of the distance between the hydrophone-speakers are $85~cm$, $1~m$, and $1.5~m$. The number of sensors is two, so does the sources. The distance of each sensor is $15~cm$, while the distance of each speaker is $55~cm$. Determination of the distance between the mic were following this spatial aliasing rule,
+\begin{equation}\label{pers:alias}
+d<\frac{\lambda}{2}
+\end{equation}
+where $d$ is the distance between mics (sensors), and $\lambda$ is the wavelength of the test signal with highest frequency (in this experiment, maximum frequency is $1000~Hz$ puretone). 
+
+\section{Time Domain Independent Component Analysis (TDICA)}
+In the case of linear mixture, mixed signal is just sum or superposition of each source followed by some gain. This assumption can be formulated as
+\begin{equation}\label{pers:mix}
+X(t)=A \cdot S(t)
+\end{equation}
+where $X(t)$ is vector matrix of mixed signal, $S(t)$ is vector matrix of source signal, and $A$ is mixing matrix of signal which have dimension of $N_x \times N_s$. $N_s$ is the number of sources, and $N_x$ is the number of sensors. Using above equation, then the source can be estimated by finding the inverse of $A$ as viewed by equation (\ref{pers:estimation}).
+
+\begin{equation}\label{pers:estimation}
+\begin{aligned}
+Y(t)=A^{-1}\cdot X(t)\\
+Y(t)=W\cdot X(t)
+\end{aligned}
+\end{equation}
+
+$W$ is called demixing matrix, and $Y(t)$ is source signals estimation. ICA algorithm estimated $W$ by utilizing the independencies and non-gaussianity feature of the signal.
+
+Since ICA the separation method which estimate the source signal using iteration process, which quite time consuming if it is applied in real time world, there exist some preprocessing method in order to shorten the iteration process. First step is centering the signal. This step intended to make zero-mean signal observation using equation (\ref{pers.centering}),
+\begin{equation}\label{pers.centering}
+X_c(t) = X(t) - E(X)
+\end{equation}
+where $X_c(t)$ is centered vector signal, and $E{X}$ is the signal expectation. After signal have been centered, it will be get to whitening process. This step intend to make recorded signal uncorrelated each other by using Eigenvalue Decomposition (\label{pers:decomp}),
+\begin{equation}\label{pers:decomp}
+V = \frac{E}{\sqrt{D}}E^T
+\end{equation}
+where $V$ is whitening matrix, $E$ is orthogonal matrix of eigenvector of $E(XX^T)$, and $D$ is diagonal matrix of its eigenvalues. After $V$ acquired, whitened signal can be obtained by using equation (\ref{pers:whtsig})
+
+\begin{equation}\label{pers:whtsig}
+X_w(t) = V X_c(t)
+\end{equation}
+
+After signal being preprocessed, the estimation of source signal will be accomplished using ICA algorithm. In this experiment, algorithm of \cite{5} was applied to estimate source signal. The principle of this algorithm was to minimize the entropy of estimated signal, using equation (\ref{pers:entropy}), since the low entropy is one of the feature of independence signal, and high entropy is the characteristic of gaussian random variable.
+
+\begin{equation}\label{pers:entropy}
+L = \sum_{t=1}^T \sum_{i=1}^n log f_i \left(w_i^T x(t)\right) ~+~ T log |det W|
+\end{equation}
+
+Demixing matrix is optimized using this epoch,
+\begin{equation}
+W^+ = W + \mu\left[I + f(X)X^T\right]W
+\end{equation}
+where $g(y)$ is non linear function, in this paper $Tanh(y)$ was used. Then the estimation signal acquired by using equation (\ref{pers:estsig}).
+
+\begin{equation}\label{pers:estsig}
+Y(t) = WX_w(t)
+\end{equation}
+
+After estmation source $Y(t)$ acquired, it will be compared to the baseline signal to evaluate the quality of source separation using equation (\ref{pers:mse})
+\begin{equation}\label{pers:mse}
+MSE = \frac{1}{M} \sum_{m-1}^M \left(s[m] - y[m]\right)^2
+\end{equation}
+MSE value of estmation and baseline are shown in Table [\ref{table:mse}]. Lower value of MSE indicated better separation performance.
+
+%\begin{comment}
+\begin{table}[h]
+\centering
+\caption{Result of Mixed Signal Separation Indicated by its MSE}
+\label{table:mse}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
+Ship                                            & Ping                                           & 0.023                      & 0.015                      & 0.059                      & 0.067                      & 0.112                      & 0.049                      \\ \hline
+Ping                                            & 900 Hz                                         & 0.055                      & 0.122                      & 0.185                      & 0.051                      & 0.23                       & 0.084                      \\ \hline
+Ship                                            & 900 Hz                                         & 0.045                      & 0.097                      & 0.063                      & 0.27                       & 0.07                       & 0.273                      \\ \hline
+900 Hz                                          & 1000 Hz                                        & 0.054                      & 0.105                      & 0.276                      & 0.155                      & 0.125                      & 0.265                      \\ \hline
+600 Hz                                          & 900 Hz                                         & 0.047                      & 0.114                      & 0.104                      & 0.323                      & 0.258                      & 0.11                       \\ \hline
+500 Hz                                          & 1000 Hz                                        & 0.083                      & 0.043                      & 0.191                      & 0.192                      & 0.214                      & 0.335                      \\ \hline
+\end{tabular}
+\end{table}
+%\end{comment}
+
+\section{Frequency Domain Independent Component Analysis (FDICA)}
+If the mixing process is not just simple superposition of each sources, in other word the signal recording performed in reverberant condition, convolutive mixture model have to be taken. This model accommodate room impulse response as the Finite Impulse Response (FIR) filter of mixed signal. It is shown in equation (\ref{pers:sigrev}).
+\begin{equation}\label{pers:sigrev}
+X(t) = \sum_{n=0}^{N-1}A^{(t)}(n)S(t-n)
+\end{equation}
+where $N$ is the length of FIR filter. If the length of reverberation is $0.5~s$ and our recording frequency sampling is $8000~Hz$, the length of FIR is $4000~taps$, thus the number of demixing matrix $W(n)$ that need to be estimated is just same in number.
+
+In order to simplify the calculation process, \cite{6} proposed to tansforming this equation in frequency domain.
+
+\begin{equation}
+X(f)=A(f)S(f)
+\end{equation}
+
+In this paper this is achieved by performing ICA after signal being transformed in frequency domain using Fast Fourier Transform (FFT) algorithm. After demixing matrix estimated so does the signal estimation in frequency domain, it will be transformed back to time domain using Inverse Fast Fourier Transform (IFFT), then the quality of estimation signal will be acquired by comparing to baseline signal. The MSE value of each FDICA estimation signal are shown in Table \ref{table:msefdica}.
+
+%\begin{comment}
+\begin{table}[h]
+\centering
+\caption{Result of Mixed Signal Separation Using FDICA Indicated by its MSE}
+\label{table:msefdica}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
+Ship                                            & Ping                                           & 0.03                       & 0.02                       & 0.02                       & 0.03                       & 0.03                       & 0.02                       \\ \hline
+Ping                                            & 900 Hz                                         & 0.03                       & 0.09                       & 0.12                       & 0.03                       & 0.03                       & 0.1                        \\ \hline
+Ship                                            & 900 Hz                                         & 0.1                        & 0.03                       & 0.09                       & 0.03                       & 0.1                        & 0.04                       \\ \hline
+900 Hz                                          & 1000 Hz                                        & 0.1                        & 0.05                       & 0.06                       & 0.1                        & 0.1                        & 0.05                       \\ \hline
+600 Hz                                          & 900 Hz                                         & 0.1                        & 0.05                       & 0.1                        & 0.04                       & 0.1                        & 0.05                       \\ \hline
+500 Hz                                          & 1000 Hz                                        & 0.09                       & 0.06                       & 0.05                       & 0.07                       & 0.06                       & 0.09                       \\ \hline
+\end{tabular}
+\end{table}
+%\end{comment}
+
+\section{Multistage Independent Component Analysis (MSICA)}
+Although FDICA can resolve the complexity of convolutive mixture, it also have some disadvantage. When the signal being transformed into frequency domain, it lost the independence assumption (since the independence assumption is statistical feature that exist in time domain), thus the separation performance will be saturated before reaching sufficient performance. 
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=5.5in]{msica.png}
+\end{center}
+\caption{\label{pict:msica}Diagram of The Process of Determining The Signal Estimation by Multistage ICA}
+\end{figure}
+
+In order to resolve this problem, \cite{2} proposed new algorithm to combine FDICA and TDICA which called MSICA. In this method, FDICA and TDICA are performed sequentially, as shown in Figure \ref{pict:msica}. FDICA was performed in the first stage, then estimated signal of FDICA will be feed as the input of second stage TDICA. The MSE value of each MSICA estimation signal are shown in Table \ref{table:msemsica}.
+
+%\begin{comment}
+\begin{table}[hb]
+\centering
+\caption{Result of Mixed Signal Separation Using MSICA Indicated by its MSE}
+\label{table:msemsica}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
+Ship                                            & Ping                                           & 0.02                       & 0.02                       & 0.02                       & 0.02                       & 0.02                       & 0.02                       \\ \hline
+Ping                                            & 900 Hz                                         & 0.026                      & 0.093                      & 0.11                       & 0.03                       & 0.032                      & 0.1                        \\ \hline
+Ship                                            & 900 Hz                                         & 0.034                      & 0.097                      & 0.032                      & 0.093                      & 0.098                      & 0.04                       \\ \hline
+900 Hz                                          & 1000 Hz                                        & 0.054                      & 0.098                      & 0.098                      & 0.058                      & 0.053                      & 0.097                      \\ \hline
+600 Hz                                          & 900 Hz                                         & 0.064                      & 0.1                        & 0.046                      & 0.101                      & 0.06                       & 0.1                        \\ \hline
+500 Hz                                          & 1000 Hz                                        & 0.055                      & 0.093                      & 0.07                       & 0.061                      & 0.087                      & 0.058                      \\ \hline
+\end{tabular}
+\end{table}
+%\end{comment}
+
+\section{Comparison of Three Different Methods}
+Comparison of the performance of each method can be seen in Figure \ref{pict:mseComparison}. Total MSE of of each signal estimation is averaged to obtain the MSE of each method.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=4in]{mseComparison.png}
+\end{center}
+\caption{\label{pict:mseComparison}Comparison of the average value of the MSE Each separation method. MSICA and FDICA has identical score. In contrast, the performance of the method TDICA decreases as the increasing of distance between sources and sensors}
+\end{figure}
+
+Referring to the result shown in Figure \ref{pict:mseComparison}, in distance of $85~cm$, TDICA, FDICA, and MSICA have similar performances, but eventually as the distance increasing, its performance was decreasing. In contrast, FDICA and MSICA gave stable result of MSE value. The best source separation can be found in the distance of $85~cm$.
+
+\section{Comparison of Simulation and Experiment}
+To analyze TDICA performance in previous section, we compared the simulation of source mixing using equation (\ref{pers:mix}). Mixing matrix $A = \begin{bmatrix}0.15 & 0.1 \\ 0.15 & 0.22\end{bmatrix}$ was used in this process. This value derivated from the gain of each hydrophone sensors. Result source separation simulation are shown in Table \ref{table:comparison}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[b]
+\centering
+\caption{Result of Mixed Signal Separation by Simulation Indicated by its MSE}
+\label{table:comparison}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Signal 1}}} & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{Signal 2}}} & \multicolumn{2}{c|}{\textbf{TDICA}}                                       & \multicolumn{2}{c|}{\textbf{FDICA}}                                       & \multicolumn{2}{c|}{\textbf{MSICA}}                                       \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                                   & \multicolumn{1}{c|}{}                                   & \multicolumn{1}{c|}{\textbf{MSE 1}} & \multicolumn{1}{c|}{\textbf{MSE 2}} & \multicolumn{1}{c|}{\textbf{MSE 1}} & \multicolumn{1}{c|}{\textbf{MSE 2}} & \multicolumn{1}{c|}{\textbf{MSE 1}} & \multicolumn{1}{c|}{\textbf{MSE 2}} \\ \hline
+\textbf{Ship}                                            & \textbf{Ping}                                           & 1.36E-07                            & 2.09E-07                            & 0.051                               & 0.015                               & 0.011                               & 0.006                               \\ \hline
+\textbf{Ping}                                            & \textbf{900 Hz}                                         & 3.84E-07                            & 4.91E-08                            & 0.063                               & 0.015                               & 0.011                               & 0.048                               \\ \hline
+\textbf{Ship}                                            & \textbf{1000 Hz}                                        & 8.64E-05                            & 4.58E-06                            & 0.05                                & 0.065                               & 0.048                               & 0.006                               \\ \hline
+\textbf{900 Hz}                                          & \textbf{1000 Hz}                                        & 5.19E-08                            & 3.73E-07                            & 0.079                               & 0.065                               & 0.048                               & 0.062                               \\ \hline
+\textbf{600 Hz}                                          & \textbf{900 Hz}                                         & 1.36E-06                            & 2.2E-07                             & 0.064                               & 0.020                               & 0.022                               & 0.061                               \\ \hline
+\textbf{500 Hz}                                          & \textbf{1000 Hz}                                        & 3.22E-08                            & 0.001115                            & 0.077                               & 0.042                               & 0.035                               & 0.062                               \\ \hline
+\end{tabular}
+\end{table}
+
+Compared to result Table 2, this result of TDICA performance in Table 3 is far better. However, MSE simulation test signal of FDICA and MSICA not scored as well as methods TDICA. STFT process on the FDICA, causing the signal can not be reconstructed perfectly when turning ISTFT transformation.
+
+\section{Discussion}
+The result of three applied methods shows the degradation of performance under real experiment compared to simulation.
+
+Performance of TDICA decline radically while the source signals mixed naturally compared to the simulation test.  There are two explanation of this event. First, the performance of source separation decrease as the intensity of signal get attenuated by propagation, in other words the SNR of signal play big role. Second the signal as the distance increase and signal got attenuated, the intensity ratio and indirect sound got bigger. Since the FDICA and MSICA shown stable performances, as shown in figure (3) the first assumption got weak, and second assumption is more dependable.
+
+The suspect of this condition is the scattering. In underwater communication the scattering occurred when the sound wave faces different temperature and salinity due to the increasing water pressure by depth of water [. Since the tank had homogen salinity and temperature, the scattering suspected came from the surface of the water. The surface of the water act as a boundary between two different medium, which is water and air. This two different medium has different characteristic of sound propagation. This made the sound wave that came to the surface will be scattered. Another suspect of scattering is due to reflection of the wall. Since the wall have been covered by the absorber, the indirect sound wave that came from this event won’t be bigger than from the surface.
+
+The reason of this hypothesis was the changing of signal distribution in the addition of distance between sources and hydrophones.  There were several causes of scattering which was occur in the sound propagation in water tank. One of them was the refracted sound by the surface of water in the tank. According to the central limit theorem, the distribution of independent component summation, tends to be Gaussian distribution.
+
+Sources of scattered sound act as new sound sources. While there was a large number of scattering, there were also the large number of summation signal, thus the independent assumption of source signal collapsed in each addition of sensors distance from the sources. Figure 9 shows is joint distribution of testing signals ship and pink, indicated by its scatter plot. It is show that the distribution of both signal tends to be Gaussian for the increasing of distance. For addition, the taken hypothesis above would cause the assumption of instantaneous mixture collapsed, since there were phase different in each scatter wave, which was the reason of decreasing performance of TDICA in addition of distance.
+
+\section{Conclusion}
+\renewcommand{\theenumi}{\arabic{enumi}}
+\begin{enumerate}
+	\item MSICA and FDICA shows almost equal value of MSE, and the TDICA method shows significant decreasing of performance for each addition of recorded distance.
+	\item In terms of source signal mixed naturally, the result shows performance below the simulation one. The best value of MSE only reach 0.01 for MSICA applied.
+\end{enumerate}
+
+\section*{References}
+\begin{thebibliography}{9}
+\bibitem{1} Cochard, N., Lacoume, J. L. 2000 “Underwater Acoustic Noise Measurement in Test Tank”.IEEE Journal of Oceanic Engineering, 25(1).
+\bibitem{2} Nishikawa, T., Saruwatari, H., dan Shikano, K. 2003. "Blind Source Separation of Acoustic Signals Based on Multistage ICA Combining Frequency-Domain ICA and Time-Domain ICA". IEICE Trans. Fundamentals, E86-A (4)
+\bibitem{3} Hyvarinen, A., Karhunen, J., dan Oja, E. 2001, "Independent Component Analysis: Basic Independent Component Analysis".NewYork: John Willey \& Sons.
+\bibitem{4} Hyvarinen, A., Karhunen, J., dan Oja, E .2001."Independent Component Analysis:Kurtosis And Classification of Densities". NewYork: John Willey \& Sons.
+\bibitem{5} Bell, Sejnowski, 1995. ” An Information-Maximization Approach to Blind Separation and Blind Deconvolution”, Neural computation, vol. 7, no. 6, pp. 1129–1159.
+\bibitem{6} Kawamoto, M., Matsuoka, K., dan Ohnishi, N. 1998. "A method of blind separation for convolved non-stationary signals". Elsevier Neurocomputing 22 :157-171
+\bibitem{7} Urick, R.J. 1983. Principle of Underwater Sound 3rd Edition. McGraw-Hill 
+\end{thebibliography}
+\end{document}
