@@ -43,23 +43,23 @@ C(s_1,s_2) = E\{s_1 s_2\} - E\{s_1\}E\{s_2\}
 
 Using two preliminary requirement above, the signals below (Table \ref{table:source}) will be treated as the source signals of the experiment.
 
-% \begin{table}[h]
-% \centering
-% \caption{Source signal}
-% \label{table:source}
-% \begin{tabular}{|l|l|l|}
-% \hline
-% \multicolumn{1}{|c|}{No.} & \multicolumn{1}{c|}{Signal} & \multicolumn{1}{c|}{Note} \\ \hline
-% 1.                        & Puretone 500 Hz             & Narrowband                \\ \hline
-% 2.                        & Puretone 600 Hz             & Narrowband                \\ \hline
-% 3.                        & Puretone 700 Hz             & Narrowband                \\ \hline
-% 4.                        & Puretone 800 Hz             & Narrowband                \\ \hline
-% 5.                        & Puretone 900 Hz             & Narrowband                \\ \hline
-% 6.                        & Puretone 1 kHz              & Narrowband                \\ \hline
-% 7.                        & Ship noise                  & Wideband stationary       \\ \hline
-% 8.                        & Sonar pinging               & Wideband Non-stationary   \\ \hline
-% \end{tabular}
-% \end{table}
+\begin{table}[h]
+\centering
+\caption{Source signal}
+\label{table:source}
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{No.} & \multicolumn{1}{c|}{Signal} & \multicolumn{1}{c|}{Note} \\ \hline
+1.                        & Puretone 500 Hz             & Narrowband                \\ \hline
+2.                        & Puretone 600 Hz             & Narrowband                \\ \hline
+3.                        & Puretone 700 Hz             & Narrowband                \\ \hline
+4.                        & Puretone 800 Hz             & Narrowband                \\ \hline
+5.                        & Puretone 900 Hz             & Narrowband                \\ \hline
+6.                        & Puretone 1 kHz              & Narrowband                \\ \hline
+7.                        & Ship noise                  & Wideband stationary       \\ \hline
+8.                        & Sonar pinging               & Wideband Non-stationary   \\ \hline
+\end{tabular}
+\end{table}
 
 In general, the source signal can be divided in three category, narrowband represented by puretone signal, wideband stationary represented by Ship Noise signal, and wideband non-stationary represented by Sonar Pinging Signal. Each of the signal were recorded in $8000$ Hz sampling frequency, $16$ bit per sample, and have $4$ seconds duration.
 
@@ -99,7 +99,7 @@ Since ICA the separation method which estimate the source signal using iteration
 \begin{equation}\label{pers.centering}
 X_c(t) = X(t) - E(X)
 \end{equation}
-where $X_c(t)$ is centered vector signal, and $E{X}$ is the signal expectation. After signal have been centered, it will be get to whitening process. This step intend to make recorded signal uncorrelated each other by using Eigenvalue Decomposition (\ref{pers:decomp}),
+where $X_c(t)$ is centered vector signal, and $E{X}$ is the signal expectation. After signal have been centered, it will be get to whitening process. This step intend to make recorded signal uncorrelated each other by using Eigenvalue Decomposition (\label{pers:decomp}),
 \begin{equation}\label{pers:decomp}
 V = \frac{E}{\sqrt{D}}E^T
 \end{equation}
@@ -125,28 +125,31 @@ where $g(y)$ is non linear function, in this paper $Tanh(y)$ was used. Then the 
 Y(t) = WX_w(t)
 \end{equation}
 
-After estmation source $Y(t)$ acquired, it will be compared to the baseline signal to evaluate the quality of source separation using equation (\ref{pers:mse}). Lower value of MSE indicated better separation performance.
+After estmation source $Y(t)$ acquired, it will be compared to the baseline signal to evaluate the quality of source separation using equation (\ref{pers:mse})
 \begin{equation}\label{pers:mse}
 MSE = \frac{1}{M} \sum_{m-1}^M \left(s[m] - y[m]\right)^2
 \end{equation}
+MSE value of estmation and baseline are shown in Table [\ref{table:mse}]. Lower value of MSE indicated better separation performance.
 
-% \begin{table}[h]
-% \centering
-% \caption{Result of Mixed Signal Separation Indicated by its MSE}
-% \label{table:mse}
-% \begin{tabular}{|l|l|l|l|l|l|l|l|}
-% \hline
-% \multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
-% \multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
-% \multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
-% Ship                                            & Ping                                           & 0.023                      & 0.015                      & 0.059                      & 0.067                      & 0.112                      & 0.049                      \\ \hline
-% Ping                                            & 900 Hz                                         & 0.055                      & 0.122                      & 0.185                      & 0.051                      & 0.23                       & 0.084                      \\ \hline
-% Ship                                            & 900 Hz                                         & 0.045                      & 0.097                      & 0.063                      & 0.27                       & 0.07                       & 0.273                      \\ \hline
-% 900 Hz                                          & 1000 Hz                                        & 0.054                      & 0.105                      & 0.276                      & 0.155                      & 0.125                      & 0.265                      \\ \hline
-% 600 Hz                                          & 900 Hz                                         & 0.047                      & 0.114                      & 0.104                      & 0.323                      & 0.258                      & 0.11                       \\ \hline
-% 500 Hz                                          & 1000 Hz                                        & 0.083                      & 0.043                      & 0.191                      & 0.192                      & 0.214                      & 0.335                      \\ \hline
-% \end{tabular}
-% \end{table}
+%\begin{comment}
+\begin{table}[h]
+\centering
+\caption{Result of Mixed Signal Separation Indicated by its MSE}
+\label{table:mse}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
+Ship                                            & Ping                                           & 0.023                      & 0.015                      & 0.059                      & 0.067                      & 0.112                      & 0.049                      \\ \hline
+Ping                                            & 900 Hz                                         & 0.055                      & 0.122                      & 0.185                      & 0.051                      & 0.23                       & 0.084                      \\ \hline
+Ship                                            & 900 Hz                                         & 0.045                      & 0.097                      & 0.063                      & 0.27                       & 0.07                       & 0.273                      \\ \hline
+900 Hz                                          & 1000 Hz                                        & 0.054                      & 0.105                      & 0.276                      & 0.155                      & 0.125                      & 0.265                      \\ \hline
+600 Hz                                          & 900 Hz                                         & 0.047                      & 0.114                      & 0.104                      & 0.323                      & 0.258                      & 0.11                       \\ \hline
+500 Hz                                          & 1000 Hz                                        & 0.083                      & 0.043                      & 0.191                      & 0.192                      & 0.214                      & 0.335                      \\ \hline
+\end{tabular}
+\end{table}
+%\end{comment}
 
 \section{Frequency Domain Independent Component Analysis (FDICA)}
 If the mixing process is not just simple superposition of each sources, in other word the signal recording performed in reverberant condition, convolutive mixture model have to be taken. This model accommodate room impulse response as the Finite Impulse Response (FIR) filter of mixed signal. It is shown in equation (\ref{pers:sigrev}).
@@ -161,25 +164,27 @@ In order to simplify the calculation process, \cite{6} proposed to tansforming t
 X(f)=A(f)S(f)
 \end{equation}
 
-In this paper this is achieved by performing ICA after signal being transformed in frequency domain using Fast Fourier Transform (FFT) algorithm. After demixing matrix estimated so does the signal estimation in frequency domain, it will be transformed back to time domain using Inverse Fast Fourier Transform (IFFT), then the quality of estimation signal will be acquired by comparing to baseline signal.
+In this paper this is achieved by performing ICA after signal being transformed in frequency domain using Fast Fourier Transform (FFT) algorithm. After demixing matrix estimated so does the signal estimation in frequency domain, it will be transformed back to time domain using Inverse Fast Fourier Transform (IFFT), then the quality of estimation signal will be acquired by comparing to baseline signal. The MSE value of each FDICA estimation signal are shown in Table \ref{table:msefdica}.
 
-% \begin{table}[h]
-% \centering
-% \caption{Result of Mixed Signal Separation Using FDICA Indicated by its MSE}
-% \label{table:msefdica}
-% \begin{tabular}{|l|l|l|l|l|l|l|l|}
-% \hline
-% \multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
-% \multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
-% \multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
-% Ship                                            & Ping                                           & 0.03                       & 0.02                       & 0.02                       & 0.03                       & 0.03                       & 0.02                       \\ \hline
-% Ping                                            & 900 Hz                                         & 0.03                       & 0.09                       & 0.12                       & 0.03                       & 0.03                       & 0.1                        \\ \hline
-% Ship                                            & 900 Hz                                         & 0.1                        & 0.03                       & 0.09                       & 0.03                       & 0.1                        & 0.04                       \\ \hline
-% 900 Hz                                          & 1000 Hz                                        & 0.1                        & 0.05                       & 0.06                       & 0.1                        & 0.1                        & 0.05                       \\ \hline
-% 600 Hz                                          & 900 Hz                                         & 0.1                        & 0.05                       & 0.1                        & 0.04                       & 0.1                        & 0.05                       \\ \hline
-% 500 Hz                                          & 1000 Hz                                        & 0.09                       & 0.06                       & 0.05                       & 0.07                       & 0.06                       & 0.09                       \\ \hline
-% \end{tabular}
-% \end{table}
+%\begin{comment}
+\begin{table}[h]
+\centering
+\caption{Result of Mixed Signal Separation Using FDICA Indicated by its MSE}
+\label{table:msefdica}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
+Ship                                            & Ping                                           & 0.03                       & 0.02                       & 0.02                       & 0.03                       & 0.03                       & 0.02                       \\ \hline
+Ping                                            & 900 Hz                                         & 0.03                       & 0.09                       & 0.12                       & 0.03                       & 0.03                       & 0.1                        \\ \hline
+Ship                                            & 900 Hz                                         & 0.1                        & 0.03                       & 0.09                       & 0.03                       & 0.1                        & 0.04                       \\ \hline
+900 Hz                                          & 1000 Hz                                        & 0.1                        & 0.05                       & 0.06                       & 0.1                        & 0.1                        & 0.05                       \\ \hline
+600 Hz                                          & 900 Hz                                         & 0.1                        & 0.05                       & 0.1                        & 0.04                       & 0.1                        & 0.05                       \\ \hline
+500 Hz                                          & 1000 Hz                                        & 0.09                       & 0.06                       & 0.05                       & 0.07                       & 0.06                       & 0.09                       \\ \hline
+\end{tabular}
+\end{table}
+%\end{comment}
 
 \section{Multistage Independent Component Analysis (MSICA)}
 Although FDICA can resolve the complexity of convolutive mixture, it also have some disadvantage. When the signal being transformed into frequency domain, it lost the independence assumption (since the independence assumption is statistical feature that exist in time domain), thus the separation performance will be saturated before reaching sufficient performance. 
@@ -191,25 +196,27 @@ Although FDICA can resolve the complexity of convolutive mixture, it also have s
 \caption{\label{pict:msica}Diagram of The Process of Determining The Signal Estimation by Multistage ICA}
 \end{figure}
 
-In order to resolve this problem, \cite{2} proposed new algorithm to combine FDICA and TDICA which called MSICA. In this method, FDICA and TDICA are performed sequentially, as shown in Figure \ref{pict:msica}. FDICA was performed in the first stage, then estimated signal of FDICA will be feed as the input of second stage TDICA.
+In order to resolve this problem, \cite{2} proposed new algorithm to combine FDICA and TDICA which called MSICA. In this method, FDICA and TDICA are performed sequentially, as shown in Figure \ref{pict:msica}. FDICA was performed in the first stage, then estimated signal of FDICA will be feed as the input of second stage TDICA. The MSE value of each MSICA estimation signal are shown in Table \ref{table:msemsica}.
 
-% \begin{table}[hb]
-% \centering
-% \caption{Result of Mixed Signal Separation Using MSICA Indicated by its MSE}
-% \label{table:msemsica}
-% \begin{tabular}{|l|l|l|l|l|l|l|l|}
-% \hline
-% \multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
-% \multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
-% \multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
-% Ship                                            & Ping                                           & 0.02                       & 0.02                       & 0.02                       & 0.02                       & 0.02                       & 0.02                       \\ \hline
-% Ping                                            & 900 Hz                                         & 0.026                      & 0.093                      & 0.11                       & 0.03                       & 0.032                      & 0.1                        \\ \hline
-% Ship                                            & 900 Hz                                         & 0.034                      & 0.097                      & 0.032                      & 0.093                      & 0.098                      & 0.04                       \\ \hline
-% 900 Hz                                          & 1000 Hz                                        & 0.054                      & 0.098                      & 0.098                      & 0.058                      & 0.053                      & 0.097                      \\ \hline
-% 600 Hz                                          & 900 Hz                                         & 0.064                      & 0.1                        & 0.046                      & 0.101                      & 0.06                       & 0.1                        \\ \hline
-% 500 Hz                                          & 1000 Hz                                        & 0.055                      & 0.093                      & 0.07                       & 0.061                      & 0.087                      & 0.058                      \\ \hline
-% \end{tabular}
-% \end{table}
+%\begin{comment}
+\begin{table}[hb]
+\centering
+\caption{Result of Mixed Signal Separation Using MSICA Indicated by its MSE}
+\label{table:msemsica}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\multirow{3}{*}{Signal 1}} & \multicolumn{1}{c|}{\multirow{3}{*}{Signal 2}} & \multicolumn{6}{c|}{Distance of sensor and source}                                                                                                                          \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{2}{c|}{85 cm}                              & \multicolumn{2}{c|}{100 cm}                             & \multicolumn{2}{c|}{150 cm}                             \\ \cline{3-8} 
+\multicolumn{1}{|c|}{}                          & \multicolumn{1}{c|}{}                          & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} & \multicolumn{1}{c|}{MSE 1} & \multicolumn{1}{c|}{MSE 2} \\ \hline
+Ship                                            & Ping                                           & 0.02                       & 0.02                       & 0.02                       & 0.02                       & 0.02                       & 0.02                       \\ \hline
+Ping                                            & 900 Hz                                         & 0.026                      & 0.093                      & 0.11                       & 0.03                       & 0.032                      & 0.1                        \\ \hline
+Ship                                            & 900 Hz                                         & 0.034                      & 0.097                      & 0.032                      & 0.093                      & 0.098                      & 0.04                       \\ \hline
+900 Hz                                          & 1000 Hz                                        & 0.054                      & 0.098                      & 0.098                      & 0.058                      & 0.053                      & 0.097                      \\ \hline
+600 Hz                                          & 900 Hz                                         & 0.064                      & 0.1                        & 0.046                      & 0.101                      & 0.06                       & 0.1                        \\ \hline
+500 Hz                                          & 1000 Hz                                        & 0.055                      & 0.093                      & 0.07                       & 0.061                      & 0.087                      & 0.058                      \\ \hline
+\end{tabular}
+\end{table}
+%\end{comment}
 
 \section{Comparison of Three Different Methods}
 Comparison of the performance of each method can be seen in Figure \ref{pict:mseComparison}. Total MSE of of each signal estimation is averaged to obtain the MSE of each method.
@@ -252,7 +259,7 @@ The result of three applied methods shows the degradation of performance under r
 
 Performance of TDICA decline radically while the source signals mixed naturally compared to the simulation test.  There are two explanation of this event. First, the performance of source separation decrease as the intensity of signal get attenuated by propagation, in other words the SNR of signal play big role. Second the signal as the distance increase and signal got attenuated, the intensity ratio and indirect sound got bigger. Since the FDICA and MSICA shown stable performances, as shown in figure (3) the first assumption got weak, and second assumption is more dependable.
 
-The suspect of this condition is the scattering. In underwater communication the scattering occurred when the sound wave faces different temperature and salinity due to the increasing water pressure by depth of water. Since the tank had homogen salinity and temperature, the scattering suspected came from the surface of the water. The surface of the water act as a boundary between two different medium, which is water and air. This two different medium has different characteristic of sound propagation. This made the sound wave that came to the surface will be scattered. Another suspect of scattering is due to reflection of the wall. Since the wall have been covered by the absorber, the indirect sound wave that came from this event won’t be bigger than from the surface.
+The suspect of this condition is the scattering. In underwater communication the scattering occurred when the sound wave faces different temperature and salinity due to the increasing water pressure by depth of water [. Since the tank had homogen salinity and temperature, the scattering suspected came from the surface of the water. The surface of the water act as a boundary between two different medium, which is water and air. This two different medium has different characteristic of sound propagation. This made the sound wave that came to the surface will be scattered. Another suspect of scattering is due to reflection of the wall. Since the wall have been covered by the absorber, the indirect sound wave that came from this event won’t be bigger than from the surface.
 
 The reason of this hypothesis was the changing of signal distribution in the addition of distance between sources and hydrophones.  There were several causes of scattering which was occur in the sound propagation in water tank. One of them was the refracted sound by the surface of water in the tank. According to the central limit theorem, the distribution of independent component summation, tends to be Gaussian distribution.
 
