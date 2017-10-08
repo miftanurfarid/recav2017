@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.30)  2 OCT 2017 16:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.5)  8 OCT 2017 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **RECAV-Juniarga.tex
 (./RECAV-Juniarga.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (./jpconf.cls
 Document Class: jpconf 2007/03/07 v1.1 LaTeX class for Journal of Physics: Conf
 erence Series
@@ -159,37 +159,49 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@line=\toks21
 \verbatim@in@stream=\read1
 )
-(./RECAV-Juniarga.aux
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/02/24 3.9q The Babel package
 
-LaTeX Warning: Label `pers:decomp' multiply defined.
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
 
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/02/24 3.9q Babel common definitions
+\babel@savecnt=\count105
+\U@D=\dimen125
 )
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(./RECAV-Juniarga.aux)
 \openout1 = `RECAV-Juniarga.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count105
-\scratchdimen=\dimen125
+\scratchcounter=\count106
+\scratchdimen=\dimen126
 \scratchbox=\box28
-\nofMPsegments=\count106
-\nofMParguments=\count107
+\nofMPsegments=\count107
+\nofMParguments=\count108
 \everyMPshowfont=\toks22
-\MPscratchCnt=\count108
-\MPscratchDim=\dimen126
-\MPnumerator=\count109
-\makeMPintoPDFobject=\count110
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen127
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
 \everyMPtoPDFconversion=\toks23
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -241,17 +253,11 @@ e
 ))
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <18.06749> not available
-(Font)              size <17.28> substituted on input line 8.
+(Font)              size <17.28> substituted on input line 9.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <18.06749> not available
-(Font)              size <17.28> substituted on input line 8.
-
-
-Underfull \hbox (badness 1215) in paragraph at lines 21--22
-\OT1/cmr/m/n/10.95 mapping. In terms of propagation and power attenuation, it p
-erformed better than
- []
+(Font)              size <17.28> substituted on input line 9.
 
 [1
 
@@ -259,49 +265,83 @@ erformed better than
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ã in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ã in font cmr10!
 
-<experimentSetupwide.png, id=15, 252.4632pt x 65.043pt>
+
+LaTeX Warning: Reference `3' on page 2 undefined on input line 31.
+
+<experimentSetupwide.png, id=14, 252.4632pt x 65.043pt>
 File: experimentSetupwide.png Graphic file (type png)
 
 <use experimentSetupwide.png>
-Package pdftex.def Info: experimentSetupwide.png used on input line 71.
+Package pdftex.def Info: experimentSetupwide.png used on input line 60.
 (pdftex.def)             Requested size: 448.07378pt x 115.44963pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2] [3 <./experimentSetupwide.png>] [4]
-Underfull \hbox (badness 1019) in paragraph at lines 190--191
-\OT1/cmr/m/n/10.95 disadvantage. When the signal being transformed into frequen
-cy domain, it lost the
+[2] [3 <./experimentSetupwide.png>]
+<figure2.png, id=28, 881.54344pt x 498.36188pt>
+File: figure2.png Graphic file (type png)
+ <use figure2.png>
+Package pdftex.def Info: figure2.png used on input line 117.
+(pdftex.def)             Requested size: 216.81pt x 122.5674pt.
+
+<figure3.png, id=29, 881.54344pt x 501.37312pt>
+File: figure3.png Graphic file (type png)
+ <use figure3.png>
+Package pdftex.def Info: figure3.png used on input line 138.
+(pdftex.def)             Requested size: 199.16928pt x 113.27075pt.
+
+Underfull \hbox (badness 2443) in paragraph at lines 139--139
+[]\OT1/cmr/bx/n/10.95 Figure 3. []\OT1/cmr/m/n/10.95 Result of mixed signal
  []
-
-<msica.png, id=33, 837.1275pt x 298.11375pt>
-File: msica.png Graphic file (type png)
- <use msica.png>
-Package pdftex.def Info: msica.png used on input line 194.
-(pdftex.def)             Requested size: 397.48499pt x 141.54636pt.
-
-<mseComparison.png, id=34, 251.0178pt x 132.0132pt>
-File: mseComparison.png Graphic file (type png)
- <use mseComparison.png>
-Package pdftex.def Info: mseComparison.png used on input line 226.
-(pdftex.def)             Requested size: 289.07999pt x 152.03958pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5] [6 <./msica.png> <./mseComparison.png>]
+
+Underfull \hbox (badness 1019) in paragraph at lines 144--145
+\OT1/cmr/m/n/10.95 disadvantage. When the signal being transformed into frequen
+cy domain, it lost the
+ []
+
+[4 <./figure2.png>] <figure5.png, id=35, 881.54344pt x 457.71pt>
+File: figure5.png Graphic file (type png)
+
+<use figure5.png>
+Package pdftex.def Info: figure5.png used on input line 150.
+(pdftex.def)             Requested size: 170.71652pt x 88.635pt.
+
+Underfull \hbox (badness 2443) in paragraph at lines 151--151
+[]\OT1/cmr/bx/n/10.95 Figure 4. []\OT1/cmr/m/n/10.95 Result of mixed signal
+ []
+
+<figure6.png, id=36, 848.4197pt x 365.86688pt>
+File: figure6.png Graphic file (type png)
+ <use figure6.png>
+Package pdftex.def Info: figure6.png used on input line 160.
+(pdftex.def)             Requested size: 170.71652pt x 73.61868pt.
+
+Underfull \hbox (badness 2426) in paragraph at lines 161--161
+[]\OT1/cmr/bx/n/10.95 Figure 5. []\OT1/cmr/m/n/10.95 Com-par-ison of the av-
+ []
+
+[5 <./figure3.png> <./figure5.png> <./figure6.png>]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
- [7]
+
+<gausDist.png, id=43, 891.33pt x 881.2925pt>
+File: gausDist.png Graphic file (type png)
+ <use gausDist.png>
+Package pdftex.def Info: gausDist.png used on input line 174.
+(pdftex.def)             Requested size: 170.71652pt x 168.79205pt.
+
+Underfull \hbox (badness 1303) in paragraph at lines 175--175
+[]\OT1/cmr/bx/n/10.95 Figure 6. []\OT1/cmr/m/n/10.95 Distribution of Testing Si
+gnal
+ []
+
 Missing character: There is no ‚ in font cmr9!
 Missing character: There is no Ä in font cmr9!
 Missing character: There is no ú in font cmr9!
@@ -317,23 +357,23 @@ Missing character: There is no ù in font cmr9!
 Missing character: There is no ‚ in font cmr9!
 Missing character: There is no Ä in font cmr9!
 Missing character: There is no ì in font cmr9!
- [8] (./RECAV-Juniarga.aux)
+[6 <./gausDist.png>] [7] (./RECAV-Juniarga.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2899 strings out of 494953
- 39670 string characters out of 6180977
- 115830 words of memory out of 5000000
- 6152 multiletter control sequences out of 15000+600000
+ 3324 strings out of 493029
+ 45046 string characters out of 6136234
+ 122803 words of memory out of 5000000
+ 6812 multiletter control sequences out of 15000+600000
  9806 words of font info for 36 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 38i,9n,23p,1149b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 1141 hyphenation exceptions out of 8191
+ 38i,8n,23p,1421b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -346,12 +386,11 @@ msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on RECAV-Juniarga.pdf (8 pages, 294508 bytes).
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on RECAV-Juniarga.pdf (7 pages, 869770 bytes).
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
