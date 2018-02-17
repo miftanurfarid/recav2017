@@ -1,0 +1,44 @@
+Title         : Vibration Transmissibility Measurement on Multi Pump Damage Detection Using Accelerometer Array
+
+Authors    : Anisatul Fauziyah, Try R. Sulistomo, Dhany Arifianto
+
+Comment :
+The title of the figure should be put under the figure
+Figure 1 is not clear
+
+The introduction only uses one literature as reference, please put more reference about the similar work.
+
+The explanation about transmissibility factor is not clear. Please information about what is calculation of transmissibility factor and how it is measured in short.
+
+The variation of the disturbance and the fault variation should be explained in the experimental set up.
+
+On the experiment set up, it is explained that there is observed pump and the disturbance pump. I thought the experiment is about the measurement of the effect of disturbance pump on the observed pump (which does not have any fault), but the analysis shows that the disturbance come from both the pump. Please put more explanation on the experiment set up part.
+
+Table 1 should be put on the experiment set up part and explanation about each configuration. What is unb, mis, bearing f etc?
+
+I think the analysis only analyses one configuration (only configuration 2) without any analysis for the other configuration. If the analysis is only for one configuration, the author does not need to put the other configuration.
+
+Figure 3b shows the frequency spectrum of pump 2 vibration in configuration 2 horizontal. I am clear what is it about. What is configuration 2 horizontal?
+
+The transmissibility value of this configuration is -7.729 dB. How the author gets this number?
+
+The amplitude of 1 st , 2 nd , and 3 rd harmonic frequency were decrease. Where is the graph or data that explain about this matter?
+
+Figure 2 still use the word pompa, amplitude, and frekuensi. Please fix this
+
+Why there is two FFT on the same graph. What is the different between the big and the small graph
+
+The scale figure 2 is not consistent (for amplitude, frequency)
+
+Please revise the significant number of each value e.g. -8.037 dB/
+
+In the conclusion: Destructive superposition occurs in the configuration of Misalignment &amp; Unbalance pump (-7.7296 dB) and Misalignment &amp; bearing fault pump (-8.037dB). While the Constructive superposition occurs in the configuration of Unbalance &amp; bearing fault pump (3.6719dB). The value of -8.037dB and 3.6719dB suddenly come. The author need to explain this value before put them in the conclusion.
+
+Signal processing such as Independent Component Analysis is required to using Pump Damage Detection Method based on ISO 13373 on multi-pump scenario. This is not a conclusion. Consider to remove this.
+
+Please put more reference especially journal paper. The entire reference is a standard or book without any other publication
+
+There are some major mistake in the paper. Please revise
+
+
+Decision   : accepted with major revision
